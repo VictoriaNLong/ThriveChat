@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import Chat from './Chat';
 
 // import{ BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
@@ -23,5 +24,10 @@ function App() {
     </div>
   );
 }
+
+
+
+
+
 
 export default App;
