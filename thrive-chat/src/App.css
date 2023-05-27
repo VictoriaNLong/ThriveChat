@@ -42,7 +42,7 @@ form {
     font-display: auto;
 }
 
-.signup-button {
+.signup-button, .login-button {
     align-items: center;
     background-color: rgb(88, 80, 80);
     padding: 15px;
@@ -77,4 +77,27 @@ form {
     border: none;
     width: 250px;
     border-bottom: 1px solid black;
+}
+
+/* unvisited link */
+a:link {
+    font-weight: bold;
+    color: White;
+    padding: 0 0 0 1%;
+    
+}
+
+/* visited link */
+a:visited {
+    color: white;
+}
+
+/* mouse over link */
+a:hover {
+    color: rgb(40, 206, 222);
+}
+
+/* selected link */
+a:active {
+    color: rgb(40, 206, 222);
 }
