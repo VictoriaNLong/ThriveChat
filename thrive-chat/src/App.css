@@ -111,7 +111,7 @@ a:active {
 
 }
 .container {
-    border: 1px solid white;
+    border: none;
     border-radius: 10px;
     width: 65%;
     height: 80%;
@@ -122,17 +122,15 @@ a:active {
 
 .sidebar{
     flex: 1;
-    background-color: lightgrey
+    background-color: #C7E8F3;
 }
 
-.chat{
-    flex: 2;
-}
 
 .navbar{
     display: flex;
     align-items: center;
-    background-color: aquamarine;
+    background-color: #19344D;
+;
     height: 50px;
     padding: 10px;
     justify-content: space-between;
@@ -141,11 +139,14 @@ a:active {
 
 .logo{
     font-weight: bold;
+    color: white;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .user{
     display: flex;
     gap: 10px;
+    color: white;
 }
 
 .img{
@@ -160,4 +161,160 @@ a:active {
     background-color: rgb(82, 113, 113);
     color:blue  
 
+}
+
+
+/* search.jxc */
+.search {
+    border-bottom: 1px solid grey;
+}
+
+.search-form {
+    padding: 10px;
+
+}
+
+.search-form > input {
+    background-color: transparent;
+    border: none;
+    color: black;
+    outline: black;
+    width: 100%;
+
+
+}
+
+.user-chats {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: black;
+    cursor: pointer;
+    
+}
+
+.user-chats:hover {
+    background-color: #68C1DF;
+}
+
+.user-chats-info > span {
+    font-size: 18px;
+    font-weight: 500;
+
+}
+
+.user-chats-info > p {
+    font-size: 14px;
+    color: lightgray;
+}
+
+
+
+/* Main chat container: chat.jsx */
+.chat {
+    flex: 2;
+
+} 
+
+.chat-info {
+    height: 50px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: grey;
+}
+
+
+/* ChatMessages.jsx */
+
+
+.chat-messages {
+    background-color: lightblue;
+    padding: 10px;
+    height: calc(100% - 160px);
+    overflow: scroll;
+}
+
+
+
+/* Input.jsx */
+
+.input-container {
+    height: 50px;
+    background-color: #fff;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.input-container > input {
+    width: 100%;
+    border: none;
+    outline: none;
+    color: rgb(28, 58, 84);
+    font-size: 18px;
+}
+
+.input-container::placeholder {
+    color: rgb(222, 222, 222);
+}
+
+.input-container > button {
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 10%;
+    font-size: 18px;
+    padding: 20px 20px;
+    color: white;
+    background-color: rgb(28, 58, 84);
+}
+
+/* Message.jsx */
+
+.message-container {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.message-info {
+    display: flex;
+    flex-direction: column;
+    color: grey;
+    font-weight: 300;
+
+}
+
+.message-content {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message-content > p {
+    background-color: lightgray;
+    border-radius: 20px;
+    padding: 10px 20px;
+    max-width: max-content;
+
+}
+
+
+/* css if content is from main user */
+.message-container.mainUser {
+    display: flex;
+    flex-direction: row-reverse;
+
+}
+
+
+/* css if content is from the main user */
+.message-content.mainUser > p {
+    background-color: white;
+    align-items: flex-end;
 }
