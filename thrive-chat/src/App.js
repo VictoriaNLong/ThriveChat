@@ -1,33 +1,29 @@
-import React from 'react';
-import { useState } from 'react';
-import Chat from './Chat';
+import Login from "./pages/login/Login";
+import Register from "./pages/register/Register";
+import Home from "./pages/Home";
+import {
+    BrowserRouter,
+    Routes,
+    Route,
+} from "react-router-dom";
 
-// import{ BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { Login } from "./Login";
-import { Register } from './Register';
 
+// create different pages for home, login, register
 
 function App() {
-  const [currentForm, setCurrentForm] = useState('Login');
-  const toggleForm = (formType) => {
-    setCurrentForm(formType);
-  }
+    return (
+        <BrowserRouter>
+            <Routes>
+                <Route path="/">
+                    <Route index element={ <Home /> } />
+                    <Route path='login' element={<Login />} />
+                    <Route path='register' element={<Register />} />
 
-  return (
-    <div className="App">
-      {
-        currentForm === "login" ? <Login onFormSwitch={toggleForm} /> : <Register onFormSwitch={toggleForm} />
-      }
-      
-
-    </div>
-  );
+                </Route>
+            </Routes>
+        </BrowserRouter>
+    );
 }
-
-
-
-
-
 
 export default App;
