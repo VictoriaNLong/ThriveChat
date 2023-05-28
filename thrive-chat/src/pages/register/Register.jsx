@@ -1,23 +1,8 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const Register = () => {
 
-    // // to navigate between login and register pages
-    // const [err, setErr] = useState(false)
-    // const navigate = useNavigate()
-
-    // // to prevent refreshing of page
-    // const handleSubmit = (e) => {
-    //     e.preventDefault()
-    //     const name = e.target[0].value;
-    //     const email = e.target[1].value;
-    //     const password = e.target[2].value;
-    //     const file = e.target[3].value;
-
-    // }
-
-    // container for the registration form
     return (
         <div className='form-container'>
             <div className="form-wrapper">
@@ -29,18 +14,24 @@ const Register = () => {
                     <input
                         className='input-name'
                         type="text"
-                        placeholder='name' />
+                        placeholder='Username'
+                        required
+                    />
                     <input
                         className='input-email'
                         type="email"
-                        placeholder='email' />
+                        placeholder='email'
+                        required
+                    />
                     <input
                         className='input-password'
                         type="password"
-                        placeholder='******' />
-                    <input
+                        placeholder='******'
+                        required
+                    />
+                    {/* <input
                         className='input-file'
-                        type="file" />
+                        type="file" /> */}
                     <button className='signup-button'>Sign up</button>
                 </form>
 

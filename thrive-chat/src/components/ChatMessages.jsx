@@ -13,7 +13,7 @@ export const ChatMessages = () => {
           <Message />
           <Message />
           <Message />
-      </div>
+      </div> 
 
   )
 }
