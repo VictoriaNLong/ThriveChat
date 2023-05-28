@@ -1,26 +1,7 @@
-import React, { useState } from 'react'
-import { useNavigate, Link } from 'react-router-dom'
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const login = () => {
-  // // to navigate between login and register pages
-  // const [err, setErr] = useState(false)
-  // const Navigate = useNavigate()
-
-  // // to prevent refreshing of page
-  // const handleSubmit = (e) => {
-  //   e.preventDefault()
-
-  //   const email = e.target[0].value;
-  //   const password = e.target[1].value;
-
-  //   try {
-
-  //   }
-  //   catch (err) {
-  //     setErr(true);
-  //   }
-
-  // };
 
 
   return (
@@ -35,11 +16,13 @@ const login = () => {
           <input
             className='input-email'
             type="email"
-            placeholder='email' />
+            placeholder='email'
+            required />
           <input
             className='input-password'
             type="password"
-            placeholder='******' />
+            placeholder='******'
+            required />
 
           <button className='login-button'>Login</button>
         </form>
