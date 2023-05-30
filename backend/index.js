@@ -5,7 +5,7 @@ const dotenv = require("dotenv")
 const userRoute = require("./routes/users")
 const authRoute = require("./routes/auth")
 const messageRoute = require("./routes/messages")
-const conversationRoute = require("./routes/Conversations")
+const conversationRoute = require("./routes/conversations")
 
 
 dotenv.config()
@@ -21,6 +21,6 @@ mongoose.connect(process.env.MONGO_URI, {useNewUrlParser: true, useUnifiedTopolo
   app.use("/backend/conversations", conversationRoute)
   app.use("/backend/messages", messageRoute)
 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("running")
 })

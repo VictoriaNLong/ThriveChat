@@ -1,4 +1,3 @@
-import React from 'react';
 import Img from "../img/image.png";
 import Attach from "../img/attach.png";
 

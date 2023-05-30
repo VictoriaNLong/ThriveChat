@@ -1,24 +1,29 @@
-import Login from "./pages/login/Login";
-import Register from "./pages/register/Register";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 import Home from "./pages/Home";
 import {
     BrowserRouter,
     Routes,
     Route,
+    Navigate
 } from "react-router-dom";
 
 import './App.css';
+import { useContext } from "react";
+import { AuthContext } from "./context/AuthContext";
 
 // create different pages for home, login, register
 
 function App() {
+
+    const {user} = useContext(AuthContext)
     return (
         <BrowserRouter>
             <Routes>
                 <Route path="/">
-                    <Route index element={ <Home /> } />
-                    <Route path='login' element={<Login />} />
-                    <Route path='register' element={<Register />} />
+                    <Route index element={ user ? <Home /> : <Register /> } />
+                    <Route path='/login' element={user ? <Navigate to="/"/> : <Login />} />
+                    <Route path='/register' element={user ? <Navigate to="/"/> : <Register />} />
 
                 </Route>
             </Routes>

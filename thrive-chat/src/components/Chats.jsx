@@ -1,15 +1,33 @@
-import React from 'react'
+import { useState, useEffect } from 'react'
+import UserPic from "../img/user.png"
+import axios from 'axios'
 
-const Chats = () => {
+const Chats = ({conversation, currentUser}) => {
+  const [user,setUser] = useState(null)
+
+  useEffect(() =>{
+    const friendId = conversation.members.find((m) => m !== currentUser._id)
+
+    const getUser = async () => {
+      try {
+        const res = await axios("/users?userId=" + friendId)
+        setUser(res.data)
+      }catch (err) {
+        console.log(err);
+      }
+    }
+    getUser()
+  },[currentUser, conversation])
+
   return (
     <div className='chats'>
       <div className="user-chats">
-        <img src="https://images.pexels.com/photos/16931542/pexels-photo-16931542/free-photo-of-love-romantic-summer-table.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" width={30} height={30} alt="user-chat-img" />
+        <img src={UserPic} width={30} height={30} alt="user-chat-img" />
         <div className="user-chats-info">
-          <span>User-reciever-2</span>
+          <span>{user?.username}</span>
 
           {/* for latest message to display */}
-          <p>Lates message here</p>
+          <p>Latest message here</p>
         </div>
 
       </div>
