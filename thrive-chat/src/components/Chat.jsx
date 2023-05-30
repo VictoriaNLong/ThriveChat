@@ -12,6 +12,7 @@ import Attach from "../img/attach.png";
 import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
+import io from "socket.io-client"
 
 
 const Chat = () => {
