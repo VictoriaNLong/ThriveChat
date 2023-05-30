@@ -242,15 +242,14 @@ a:active {
   }
 
 
-/* ChatMessages.jsx */
-
-
-.chat-messages {
+/* START: ChatMessages.jsx  (DELETED: do not erase for reference) */
+/* .chat-messages {
     background-color: #8FC1E3;
     padding: 10px;
     height: calc(100% - 160px);
     overflow: scroll;
-}
+} */
+/* -----END----- */
 
 
 
