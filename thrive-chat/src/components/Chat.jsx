@@ -1,14 +1,15 @@
 // What's being sent out of input
 
 import Message from './Message';
-import Input from './Input';
 import Navbar from "./Navbar";
 import Search from '../components/Search';
 import Chats from "./Chats";
 import Camera from "../img/camera.png"
 import Add from "../img/add.png"
 import More from "../img/more.png"
-import { useContext, useState, useEffect } from 'react';
+import Img from "../img/image.png";
+import Attach from "../img/attach.png";
+import { useContext, useState, useEffect, useRef } from 'react';
 import { AuthContext } from '../context/AuthContext';
 import axios from 'axios';
 
@@ -17,7 +18,9 @@ const Chat = () => {
   const [conversations, setConversations] = useState([]) 
   const [currentChat, setCurrentChat] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [newMessage, setNewMessage] = useState("")
  const {user} = useContext(AuthContext) 
+ const scrollRef = useRef()
 
     useEffect(() =>{
     const getConversations = async () =>{
@@ -35,7 +38,7 @@ const Chat = () => {
   const getMessages = async ()=>{
     try{
     const res = await axios.get("/messages/" + currentChat?._id)
-    setMessages((await res).data)
+    setMessages(res.data)
   }catch (err) {
     console.log(err);
   }
@@ -43,7 +46,27 @@ const Chat = () => {
   getMessages()
  },[currentChat])
 
- console.log(messages)
+const handleSubmit =  async (e) => {
+  e.preventDefault()
+  const message = {
+    sender: user._id,
+    text: newMessage,
+    conversationId: currentChat._id
+  }
+  try{
+    const res = await axios.post("/messages", message)
+    setMessages([...messages, res.data])
+    setNewMessage(" ")
+  }catch (err) {
+    console.log(err);
+  }
+}
+
+useEffect(() => {
+scrollRef.current?.scrollIntoView({behavior: "smooth"})
+},[messages])
+
+
   return (
     <>
     <div className='sidebar'>
@@ -67,18 +90,34 @@ const Chat = () => {
         </div>
       </div>
       {
-        currentChat ?
+        currentChat ? (
       
       <>
       <div className='chat-messages'>
         {messages.map((m) => (
-          <Message message={m} />
+          <div ref={scrollRef}>
+          <Message message={m} own={m.sender === user._id} />
+          </div>
         ))}
           
       </div> 
-       </> : <span className='noConvo'>Open a Conversation</span>
+       </> ) : <span className='noConvo'>Open a Conversation</span>
        }
-      <Input />
+
+      <div className='input-container'>
+      <input type="text" placeholder='Your message here...' 
+      onChange={(e) => setNewMessage(e.target.value)}
+      value={newMessage}/>
+      <div className="send">
+        <img src={Attach} width={20} height={20} alt="" />
+        <input type="file" style={{display:"none"}} id="file" />
+        <label htmlFor="file">
+          <img src={Img} width={20} height={20} alt="" />
+        </label>
+      </div>
+      <button className="chatSubmitButton" onClick={handleSubmit}>Send</button>
+
+    </div>
     </div>
    </>
   )
