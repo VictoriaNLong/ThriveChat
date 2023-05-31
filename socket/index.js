@@ -12,10 +12,6 @@ const io = require("socket.io")(5000,{
         users.push({ userId, socketId });
     };
     
-    const removeUser = (socketId) => {
-      users = users.filter((user) => user.socketId !== socketId);
-    };
-    
     const getUser = (userId) => {
       return users.find((user) => user.userId === userId);
     };
@@ -42,7 +38,6 @@ const io = require("socket.io")(5000,{
 
       socket.on("disconnect", () => {
         console.log("a user disconnected!");
-        removeUser(socket.id);
         io.emit("getUsers", users);
       });
     });
