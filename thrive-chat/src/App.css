@@ -167,7 +167,7 @@ a:active {
 
 /* search.jxc */
 .search {
-    border-bottom: 1px solid grey;
+    border-bottom: 1px solid white;
 }
 
 .search-form {
@@ -207,7 +207,7 @@ a:active {
 
 .user-chats-info > p {
     font-size: 14px;
-    color: #31708E;
+    color: black;
 }
 
 .chat-icons{
@@ -223,7 +223,7 @@ a:active {
 
 .chat-info {
     height: 50px;
-    background-color: #F7F9FB;
+    background-color:rgb(37, 71, 97);
     display: flex;
     align-items: center;
     justify-content: space-between;
